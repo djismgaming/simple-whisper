@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper.cpp Transcription</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Whisper.cpp Transcription</h1>
+            
+            <form id="transcription-form">
+                <div class="form-group">
+                    <label for="file-input">Upload Audio/Video File</label>
+                    <input type="file" id="file-input" accept="audio/*,video/*" required>
+                    <div class="file-info" id="file-info"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="model-select">Model</label>
+                    <select id="model-select">
+                        <option value="whispercpp" selected>whispercpp</option>
+                        <option value="whispercpp1">whispercpp1</option>
+                        <option value="whispercpp2">whispercpp2</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="submit-btn" disabled>
+                    <span id="btn-text">Submit</span>
+                    <span id="loading-spinner" class="spinner"></span>
+                </button>
+            </form>
+            
+            <div id="error-container" class="error-container"></div>
+            
+            <div id="result-container" class="result-container">
+                <div class="result-header">
+                    <h2>Transcription Result</h2>
+                    <button id="copy-btn" class="copy-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy
+                    </button>
+                </div>
+                <div id="result-text" class="result-text"></div>
+                <div id="copy-success" class="copy-success"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+curl localhost:8080/v1/audio/transcriptions -H "Content-Type: multipart/form-data" -F temperature="0.0" -F temperature_inc="0.2" -F model="whispercpp" -F file="@C:\Users\Ismael\code\simple-whisper\video.mp4"
