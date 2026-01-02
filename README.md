@@ -1,6 +1,6 @@
 # Simple-Whisper (vibe-coded)
 
-This is a simple, [vibe coded](session-ses_4946.md), webUI for a whisper.cpp server. It allows users to upload a video/audio file and get the output text from the server.
+This is a simple, [vibe-coded](session-ses_4946.md), webUI for a whisper.cpp server. It allows users to upload a video/audio file and get the output text from the server.
 
 The inference is done using the whisper.cpp server running on `localhost:8080/v1/audio/transcriptions`.
 
