@@ -175,10 +175,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function restoreDefault(slot) {
-        document.getElementById('model-name-' + slot).value = DEFAULT_MODEL_CONFIG.name;
-        document.getElementById('temperature-' + slot).value = DEFAULT_MODEL_CONFIG.temperature;
-        document.getElementById('temperature-inc-' + slot).value = DEFAULT_MODEL_CONFIG.temperature_inc;
-        document.getElementById('server-url-' + slot).value = DEFAULT_MODEL_CONFIG.serverUrl;
+        const defaultConfig = DEFAULT_MODELS[slot - 1];
+        document.getElementById('model-name-' + slot).value = defaultConfig.name;
+        document.getElementById('temperature-' + slot).value = defaultConfig.temperature;
+        document.getElementById('temperature-inc-' + slot).value = defaultConfig.temperature_inc;
+        document.getElementById('server-url-' + slot).value = defaultConfig.serverUrl;
     }
 
     populateModelSelect();
