@@ -23,3 +23,8 @@ C:\Users\<user>\apps\whispercpp\whisper-server.exe `
       -pp `
       -pr `
 ```
+## Screenshots:
+
+![Simple-Whisper main screen screenshot](image-main.png)
+
+![Simple-Whisper settings screen modal screenshot](image-settings.png)
