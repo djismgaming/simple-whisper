@@ -27,6 +27,14 @@
                     </select>
                 </div>
                 
+                <div class="form-group">
+                    <label for="server-url">Server URL</label>
+                    <div class="input-with-button">
+                        <input type="text" id="server-url" placeholder="http://localhost:8080/v1/audio/transcriptions">
+                        <button type="button" id="reset-url-btn" class="reset-btn">Reset</button>
+                    </div>
+                </div>
+                
                 <button type="submit" id="submit-btn" disabled>
                     <span id="btn-text">Submit</span>
                     <span id="loading-spinner" class="spinner"></span>
@@ -38,13 +46,16 @@
             <div id="result-container" class="result-container">
                 <div class="result-header">
                     <h2>Transcription Result</h2>
-                    <button id="copy-btn" class="copy-btn">
+                    <div class="result-actions">
+                        <button id="clear-btn" class="clear-btn" disabled>Clear</button>
+                        <button id="copy-btn" class="copy-btn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
                         Copy
                     </button>
+                    </div>
                 </div>
                 <div id="result-text" class="result-text"></div>
                 <div id="copy-success" class="copy-success"></div>
