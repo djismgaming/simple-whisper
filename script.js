@@ -1,14 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const DEFAULT_SERVER_URL = 'http://localhost:8080/v1/audio/transcriptions';
+    const STORAGE_KEY = 'whisper-server-url';
+
     const form = document.getElementById('transcription-form');
     const fileInput = document.getElementById('file-input');
     const modelSelect = document.getElementById('model-select');
+    const serverUrlInput = document.getElementById('server-url');
     const submitBtn = document.getElementById('submit-btn');
     const fileInfo = document.getElementById('file-info');
     const resultContainer = document.getElementById('result-container');
     const resultText = document.getElementById('result-text');
     const errorContainer = document.getElementById('error-container');
     const copyBtn = document.getElementById('copy-btn');
+    const clearBtn = document.getElementById('clear-btn');
     const copySuccess = document.getElementById('copy-success');
+    const resetUrlBtn = document.getElementById('reset-url-btn');
+
+    serverUrlInput.value = localStorage.getItem(STORAGE_KEY) || DEFAULT_SERVER_URL;
 
     fileInput.addEventListener('change', function() {
         if (this.files.length > 0) {
@@ -40,8 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.append('temperature_inc', '0.2');
         formData.append('model', modelSelect.value);
 
+        const serverUrl = serverUrlInput.value || DEFAULT_SERVER_URL;
+        localStorage.setItem(STORAGE_KEY, serverUrl);
+
         try {
-            const response = await fetch('http://localhost:8080/v1/audio/transcriptions', {
+            const response = await fetch(serverUrl, {
                 method: 'POST',
                 body: formData
             });
@@ -81,6 +92,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    clearBtn.addEventListener('click', function() {
+        hideResult();
+    });
+
+    resetUrlBtn.addEventListener('click', function() {
+        serverUrlInput.value = DEFAULT_SERVER_URL;
+        localStorage.setItem(STORAGE_KEY, DEFAULT_SERVER_URL);
+    });
+
     function showError(message) {
         errorContainer.textContent = message;
         errorContainer.classList.add('show');
@@ -93,10 +113,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function showResult(text) {
         resultText.textContent = text;
         resultContainer.classList.add('show');
+        clearBtn.disabled = false;
     }
 
     function hideResult() {
         resultContainer.classList.remove('show');
+        clearBtn.disabled = true;
     }
 
     function showCopySuccess(message) {

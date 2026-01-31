@@ -47,6 +47,7 @@ label {
 }
 
 input[type="file"],
+input[type="text"],
 select {
     width: 100%;
     padding: 12px;
@@ -57,14 +58,42 @@ select {
 }
 
 input[type="file"]:hover,
+input[type="text"]:hover,
 select:hover {
     border-color: #667eea;
 }
 
 input[type="file"]:focus,
+input[type="text"]:focus,
 select:focus {
     outline: none;
     border-color: #667eea;
+}
+
+.input-with-button {
+    display: flex;
+    gap: 10px;
+}
+
+.input-with-button input[type="text"] {
+    flex: 1;
+}
+
+.reset-btn {
+    background: #f0f0f0;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.reset-btn:hover {
+    background: #e0e0e0;
 }
 
 .file-info {
@@ -161,6 +190,32 @@ button[type="submit"]:disabled {
     color: #333;
     font-size: 20px;
     font-weight: 600;
+}
+
+.result-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.clear-btn {
+    background: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.clear-btn:hover:not(:disabled) {
+    background: #fdd;
+}
+
+.clear-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .copy-btn {
