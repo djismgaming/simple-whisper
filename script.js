@@ -115,6 +115,21 @@ document.addEventListener('DOMContentLoaded', function() {
         settingsModal.classList.remove('show');
     }
 
+    function isValidUrl(url) {
+        try {
+            new URL(url);
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    function isValidNumber(value) {
+        if (value === '') return true;
+        const num = parseFloat(value);
+        return !isNaN(num) && isFinite(num);
+    }
+
     function saveSettings() {
         const existingConfigs = getModelConfigs();
         const configs = [];
@@ -126,6 +141,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!name) {
                 showSettingsError('Model name is required for slot ' + i);
+                return;
+            }
+
+            if (serverUrl && !isValidUrl(serverUrl)) {
+                showSettingsError('Invalid server URL format for slot ' + i);
+                return;
+            }
+
+            if (temperature && !isValidNumber(temperature)) {
+                showSettingsError('Temperature must be a numeric value for slot ' + i);
+                return;
+            }
+
+            if (temperatureInc && !isValidNumber(temperatureInc)) {
+                showSettingsError('Temperature Inc must be a numeric value for slot ' + i);
                 return;
             }
 
